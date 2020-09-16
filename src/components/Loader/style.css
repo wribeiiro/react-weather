@@ -1,0 +1,18 @@
+.loader {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 15px 25px;
+    color: var(--white);
+
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+}

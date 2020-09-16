@@ -12,7 +12,7 @@ function Input ({type, name, value, onChange, onKeyPress, placeholder}) {
                 value={value} 
                 onChange={onChange} 
                 onKeyPress={onKeyPress} 
-                placeholder={placeholder} 
+                placeholder={placeholder}
             />
         </div>
     );
