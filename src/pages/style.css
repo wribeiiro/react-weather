@@ -1,0 +1,13 @@
+#page-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    flex-direction: row;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../assets/images/rain.jpg') repeat;
+        background-position: center top;
+        background-attachment: fixed;
+        background-size: cover;
+}
