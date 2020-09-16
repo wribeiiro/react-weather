@@ -1,27 +1,20 @@
 * {
-  box-sizing: border-box;
-  font-family: 'Rajdhani', sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Rajdhani', sans-serif;
 }
 
 :root {
-  --primary: #2A7AE4;
-  --black: #000000;
-  --blackLighter: #9E9E9E;
-  --grayLight: #F5F5F5;
-  --grayMedium: #e5e5e5; 
-  --white: #FFFFFF;
-  --frontEnd: #6BD1FF;
-  --backEnd: #00C86F;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+	--primary: #2A7AE4;
+	--black: #000000;
+	--blackLighter: #9E9E9E;
+	--grayLight: #F5F5F5;
+	--grayMedium: #e5e5e5;
+	--white: #FFFFFF;
+	--frontEnd: #6BD1FF;
+	--backEnd: #00C86F;
 }
