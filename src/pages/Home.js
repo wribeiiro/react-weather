@@ -1,5 +1,8 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react'
+import {useForm} from 'react-hook-form'
+
 import api from '../services/Api/index'
+import {checkBackground} from '../services/Util/index'
 
 import SearchInput from '../components/SearchInput'
 import LocationBox from '../components/LocationBox'
@@ -12,30 +15,69 @@ function Home() {
     const [weather, setWeather] = useState({})
     const [query, setQuery] = useState('')
 
-    const search = async evt => {
-        if (evt.key === "Enter") {
-            const response = await api.get(``, { 
+    const { register, handleSubmit, errors } = useForm() // initialize the hook
+
+    const onSubmit = (data) => {
+        console.log(data);
+    }
+
+    const getCurrentLocation = async () => {
+        if (navigator.geolocation)
+            await navigator.geolocation.getCurrentPosition(setCurrentPosition)
+    }
+
+    const setCurrentPosition = (position) => {
+        search(null, position.coords)
+    }
+
+    useEffect(() => {
+        getCurrentLocation()
+    }, [])
+
+    const search = async (evt, coords) => {
+
+        if (coords) {
+            const parameters =  { 
                 params: { 
-                    q: query 
+                    lat: coords.latitude,
+                    lon: coords.longitude
                 }
-            })
-            
+            }
+
+            const response = await api.get(``, parameters)
             setWeather(response.data)
+        } else {
+
+            if (evt.key === "Enter") {
+                const parameters =  { 
+                    params: { 
+                        q: query 
+                    }
+                }
+    
+                const response = await api.get(``, parameters)
+                setWeather(response.data)
+                setQuery('')
+            }
         }
     }
 
     return (
-        <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app-default dynamic' : 'app-default') : 'app-default'}>
+        <div style={checkBackground(weather)} className="app">
             <main>
                 <div className="container">
-                    <SearchInput
-                        type="text"
-                        name="search"
-                        value={query}
-                        onChange={e => setQuery(e.target.value)}
-                        onKeyPress={search}
-                        placeholder="Type a city for search"
-                    />
+                    <form className="form-search" onSubmit={handleSubmit(onSubmit)}>
+                        <SearchInput
+                            refs={register({ required: true })}
+                            type="text"
+                            name="search"
+                            value={query}
+                            onChange={e => setQuery(e.target.value)}
+                            onKeyPress={search}
+                            placeholder="Type a city for search"
+                        />
+                        {errors.search && 'Search is required.'}
+                    </form>
                 </div>
 
                 {(typeof weather.main != "undefined") ? (

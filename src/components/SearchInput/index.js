@@ -4,7 +4,7 @@ import './style.css';
 
 function Input ({type, name, value, onChange, onKeyPress, placeholder}) {
     return (
-        <div class="search-input-wrapper">
+        <div className="search-input-wrapper">
             <input 
                 type={type} 
                 className="search-input" 
