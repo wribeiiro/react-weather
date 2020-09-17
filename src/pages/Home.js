@@ -68,6 +68,7 @@ function Home() {
                 }
     
                 const response = await api.get(``, parameters)
+
                 setWeather(response.data)
                 setQuery('')
                 setLoader(false)
