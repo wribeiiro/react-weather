@@ -2,7 +2,8 @@
 Simple weather app using react and openweather api.
 
 # Screenshot
-![Screenshot](https://github.com/wribeiiro/react-weather/blob/master/public/screenshot.png)
+![react-weather](https://user-images.githubusercontent.com/20648572/112696533-1183fa80-8e97-11eb-882f-f0b619e7243e.gif)
+
 
 # Getting started
 
